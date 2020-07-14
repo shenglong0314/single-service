@@ -15,8 +15,7 @@ public class InvokConfig{
     @Bean
     public Config processEngineConfigurationConfigurer()
     {
-        Config config = new Config();
-        config.getInvokMange().setSqlSessionTemplate(sqlSessionTemplate);
+        Config config = new Config(sqlSessionTemplate);
         return config;
     }
 }

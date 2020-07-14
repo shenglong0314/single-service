@@ -1,15 +1,16 @@
 package com.rubete.singleservice.core;
 
 
+import org.mybatis.spring.SqlSessionTemplate;
+
 public class Config {
     private InvokManage invokMange = InvokManage.getInvokManage();
 
-    public InvokManage getInvokMange() {
-        return invokMange;
+
+    public Config(SqlSessionTemplate sqlSessionTemplate){
+        invokMange.setSqlSessionTemplate(sqlSessionTemplate);
     }
 
-    public void setInvokMange(InvokManage invokMange) {
-        this.invokMange = invokMange;
-    }
+
 
 }
