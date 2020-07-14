@@ -41,6 +41,7 @@ public class SysUser {
     private String sex;
 
 
+
     private String avatar;
 
     private String password;
