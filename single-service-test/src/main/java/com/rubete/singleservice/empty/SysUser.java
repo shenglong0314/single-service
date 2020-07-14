@@ -3,21 +3,15 @@ package com.rubete.singleservice.empty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  *
  */
 @Data
-@Entity
+//@Alias("sysUser")
 public class SysUser {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     private String deptId;
@@ -39,8 +33,6 @@ public class SysUser {
 
 
     private String sex;
-
-
 
     private String avatar;
 
