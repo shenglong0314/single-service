@@ -1,5 +1,7 @@
 package com.rubete.singleservice.config;
 
+
+
 import com.rubete.singleservice.core.Config;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Component;
 public class InvokConfig{
     @Autowired
     private SqlSessionTemplate sqlSessionTemplate;
-
     @Bean
     public Config processEngineConfigurationConfigurer()
     {
