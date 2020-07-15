@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication()
+@ComponentScan({"com.rubete.singleservice.core","com.rubete.singleservice"})
 public class SingleServiceApplication {
 
     public static void main(String[] args) {
