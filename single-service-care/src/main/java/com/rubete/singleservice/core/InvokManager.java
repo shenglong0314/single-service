@@ -1,12 +1,24 @@
 package com.rubete.singleservice.core;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.mybatis.spring.SqlSessionTemplate;
 
-@Service
+
 public class InvokManager {
 
-    @Autowired
-    private InvokService invokService;
+    public static final InvokManager invokManager= new InvokManager();
+    private SqlSessionTemplate sqlSessionTemplate;
+
+
+    public static InvokManager getInvokManager() {
+        return invokManager;
+    }
+
+    public SqlSessionTemplate getSqlSessionTemplate() {
+        return sqlSessionTemplate;
+    }
+
+    public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
+        this.sqlSessionTemplate = sqlSessionTemplate;
+    }
 }
