@@ -1,4 +1,4 @@
-package com.rubete.singleservice.core.Fileter;
+package com.rubete.singleservice.core.fileter;
 
 
 @FunctionalInterface

@@ -1,11 +1,9 @@
 package com.rubete.singleservice.core.service;
 
 
-import com.rubete.singleservice.core.Fileter.IDataFileterFunction;
-import org.mybatis.spring.SqlSessionTemplate;
+import com.rubete.singleservice.core.fileter.IDataFileterFunction;
 
 import java.util.List;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 public interface Service {

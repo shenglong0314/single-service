@@ -1,6 +1,6 @@
 package com.rubete.singleservice.core.service;
 
-import com.rubete.singleservice.core.Fileter.IFilter;
+import com.rubete.singleservice.core.fileter.IFilter;
 
 public class Servicefileter extends InvokService implements IFilter {
     @Override
