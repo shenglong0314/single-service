@@ -11,7 +11,10 @@ import java.util.stream.Collectors;
 
 public class InvokService implements Service {
 
-    public SqlSessionTemplate sqlSessionTemplate = InvokManager.getInvokManager().getSqlSessionTemplate();
+    public SqlSessionTemplate sqlSessionTemplate = null;
+    public InvokService(){
+        sqlSessionTemplate= InvokManager.getInvokManager().getSqlSessionTemplate();
+    }
     public <R>R select(String id, Object param) {
         R ts = (R) sqlSessionTemplate.selectList(id, param);
         return ts;

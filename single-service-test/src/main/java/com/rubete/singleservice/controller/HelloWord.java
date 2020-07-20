@@ -1,6 +1,7 @@
 package com.rubete.singleservice.controller;
 
 
+import com.rubete.singleservice.core.InvokManager;
 import com.rubete.singleservice.core.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +14,13 @@ import java.util.Map;
 @RestController
 public class HelloWord {
 
+   /* @Autowired
+    private Service service;*/
     @Autowired
-    private Service service;
-
+    private InvokManager invokManager;
     @RequestMapping("/hello")
     public ResponseEntity hello(@RequestParam Map<String,Object> map){
-        Object select = service.select("userMapper.selectUser", map, m -> {
+        Object select = invokManager.getService().select("userMapper.selectUser", map, m -> {
             return m;
         });
         return ResponseEntity.ok(select);

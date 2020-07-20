@@ -7,8 +7,9 @@ import com.rubete.singleservice.core.InvokManager;
 public abstract class InvokConfig {
     private InvokManager invokManager=InvokManager.getInvokManager();
 
-    public  void exec(){
+    public  InvokManager exec(){
         setSqlSessionTemplate(invokManager);
+        return invokManager;
     }
 
     public abstract InvokManager setSqlSessionTemplate(InvokManager invokManager);
