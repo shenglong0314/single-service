@@ -11,6 +11,5 @@ public abstract class InvokConfig {
         setSqlSessionTemplate(invokManager);
         return invokManager;
     }
-
     public abstract InvokManager setSqlSessionTemplate(InvokManager invokManager);
 }

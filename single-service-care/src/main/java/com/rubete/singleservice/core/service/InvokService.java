@@ -1,7 +1,7 @@
 package com.rubete.singleservice.core.service;
 
 
-import com.rubete.singleservice.core.fileter.IDataFileterFunction;
+
 import com.rubete.singleservice.core.InvokManager;
 import org.mybatis.spring.SqlSessionTemplate;
 import java.util.List;
@@ -11,21 +11,19 @@ import java.util.stream.Collectors;
 
 public class InvokService implements Service {
 
-    public SqlSessionTemplate sqlSessionTemplate = null;
-    public InvokService(){
-        sqlSessionTemplate= InvokManager.getInvokManager().getSqlSessionTemplate();
-    }
+    private  static SqlSessionTemplate sqlSessionTemplate = null;
+
     public <R>R select(String id, Object param) {
         R ts = (R) sqlSessionTemplate.selectList(id, param);
         return ts;
     }
 
 
-    public <T,R> R select(String id, Object param, IDataFileterFunction<T,R> fun) {
+/*    public <T,R> R select(String id, Object param, IDataFileterFunction<T,R> fun) {
         T ts = (T) sqlSessionTemplate.selectList(id, param);
         R filter = fun.filter(ts);
         return filter;
-    }
+    }*/
 
   /* public <T,R> R select(String id, Object param, Function<T,R> fun) {
         T ts = (T) sqlSessionTemplate.selectList(id, param);
@@ -60,7 +58,7 @@ public class InvokService implements Service {
         return sqlSessionTemplate;
     }
 
-    public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
-        this.sqlSessionTemplate = sqlSessionTemplate;
+    public static void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplat) {
+        sqlSessionTemplate = sqlSessionTemplat;
     }
 }

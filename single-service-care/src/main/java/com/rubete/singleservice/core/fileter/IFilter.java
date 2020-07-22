@@ -1,6 +1,7 @@
 package com.rubete.singleservice.core.fileter;
 
+
+@FunctionalInterface
 public interface IFilter {
-    public void before(Object obj);
-    public void after(Object obj);
+    public Object action(Object obj);
 }

@@ -20,9 +20,7 @@ public class HelloWord {
     private InvokManager invokManager;
     @RequestMapping("/hello")
     public ResponseEntity hello(@RequestParam Map<String,Object> map){
-        Object select = invokManager.getService().select("userMapper.selectUser", map, m -> {
-            return m;
-        });
+        Object select = invokManager.getService().select("userMapper.selectUser", map);
         return ResponseEntity.ok(select);
     }
 }

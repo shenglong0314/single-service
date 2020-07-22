@@ -20,11 +20,11 @@ public class Beans {
         InvokManager exec = new InvokConfig() {
             @Override
             public InvokManager setSqlSessionTemplate(InvokManager invokManager) {
+                System.out.println("======================="+invokManager);
                 invokManager.setSqlSessionTemplate(sqlSessionTemplate);
                 return invokManager;
             }
         }.exec();
-        SqlSessionTemplate sqlSessionTemplate = exec.getSqlSessionTemplate();
         return exec;
     }
 }
