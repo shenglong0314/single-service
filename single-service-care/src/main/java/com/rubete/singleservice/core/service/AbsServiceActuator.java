@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 import java.util.function.Function;
 
-public abstract class AbsServiceActuator implements IActuator {
+public abstract class AbsServiceActuator {
     private  static SqlSessionTemplate sqlSessionTemplate = null;
 
     public static SqlSessionTemplate getSqlSessionTemplate() {
@@ -15,7 +15,6 @@ public abstract class AbsServiceActuator implements IActuator {
     public static void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
         AbsServiceActuator.sqlSessionTemplate = sqlSessionTemplate;
     }
-
-    // public abstract Object exec(String id, Object obj, Function fun);
+    public abstract Object action(ParameterActuator actuator);
 
 }

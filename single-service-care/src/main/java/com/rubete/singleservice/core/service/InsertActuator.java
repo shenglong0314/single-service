@@ -8,7 +8,7 @@ import java.util.function.Function;
 public class InsertActuator extends AbsServiceActuator {
 
     @Override
-    public Object action(IActuator actuator) {
+    public Object action(ParameterActuator actuator) {
         return null;
     }
 }

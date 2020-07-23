@@ -1,10 +1,18 @@
 package com.rubete.singleservice.core.Parameter;
 
 import com.rubete.singleservice.core.execute.IActuator;
-public abstract class ParameterActuator implements IActuator {
+import com.rubete.singleservice.core.fileter.IDataFilter;
+import com.rubete.singleservice.core.service.AbsServiceActuator;
+
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public abstract class ParameterActuator {
     private String id;
     private Object obj;
     private Object data;
+    private Predicate fun;
+    private IDataFilter dataFilter;
 
     public String getId() {
         return id;
@@ -32,6 +40,21 @@ public abstract class ParameterActuator implements IActuator {
         this.data = data;
         return this;
     }
+    public abstract Object action(AbsServiceActuator actuator);
 
+    public Predicate getFun() {
+        return fun;
+    }
 
+    public void setFun(Predicate fun) {
+        this.fun = fun;
+    }
+
+    public IDataFilter getDataFilter() {
+        return dataFilter;
+    }
+
+    public void setDataFilter(IDataFilter dataFilter) {
+        this.dataFilter = dataFilter;
+    }
 }
