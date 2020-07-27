@@ -22,7 +22,7 @@ public class ServiceActuatorManage {
         map.put("select",new SelectActuator());
     }
 
-    public static ServiceActuatorManage getINSTANCE() {
+    public static ServiceActuatorManage getInstance() {
         return INSTANCE;
     }
 }

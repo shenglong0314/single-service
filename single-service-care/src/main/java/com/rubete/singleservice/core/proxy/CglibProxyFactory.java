@@ -1,8 +1,7 @@
 package com.rubete.singleservice.core.proxy;
 
 
-import com.rubete.singleservice.core.fileter.IFilter;
-import com.rubete.singleservice.core.fileter.UpdateParam;
+
 import com.rubete.singleservice.core.service.Service;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -19,7 +18,7 @@ public class CglibProxyFactory implements MethodInterceptor {
     public CglibProxyFactory(Service target) {
         this.target = target;
     }
-    private IFilter iFilter= new UpdateParam();
+
 
     public Service getProxyInstance(){
         //1.工具类
@@ -35,7 +34,6 @@ public class CglibProxyFactory implements MethodInterceptor {
     @Override
     public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
         logger.info("开始事务...");
-        iFilter.action(args);
         //执行目标对象的方法
         Object returnValue = method.invoke(target, args);
 

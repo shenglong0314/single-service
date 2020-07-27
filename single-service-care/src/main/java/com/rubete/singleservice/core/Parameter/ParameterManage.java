@@ -7,6 +7,10 @@ public class ParameterManage {
     private Map<String,Parameter> map = new HashMap<>();
     private static final ParameterManage INSTANCE = new ParameterManage();
 
+    public ParameterManage() {
+        this.init();
+    }
+
     public Map<String, Parameter> getMap() {
         return map;
     }
@@ -29,6 +33,6 @@ public class ParameterManage {
     }
 
     public void init(){
-
+        this.map.put("default",new DefaultParameter());
     }
 }

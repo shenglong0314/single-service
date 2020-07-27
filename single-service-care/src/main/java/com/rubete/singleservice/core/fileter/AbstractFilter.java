@@ -1,22 +1,26 @@
 package com.rubete.singleservice.core.fileter;
 
 
-public abstract class AbstractFilter implements IFilter,Comparable<AbstractFilter> {
-   protected int order = 1000;
-   private AbstractFilter next = new EmptyFilter();
+import com.rubete.singleservice.core.Parameter.Parameter;
+
+public abstract class AbstractFilter implements IFilter, Comparable<AbstractFilter> {
+    protected int order = 1000;
+    private AbstractFilter next = null;
 
     public AbstractFilter() {
     }
-    public AbstractFilter( AbstractFilter filter) {
-        this.next=filter;
+
+    public AbstractFilter(AbstractFilter filter) {
+        this.next = filter;
     }
 
     public AbstractFilter(int order) {
         this.order = order;
 
     }
+
     public AbstractFilter(int order, AbstractFilter filter) {
-        this.next=filter;
+        this.next = filter;
         this.order = order;
 
     }
@@ -31,19 +35,22 @@ public abstract class AbstractFilter implements IFilter,Comparable<AbstractFilte
 
     @Override
     public int compareTo(AbstractFilter o) {
-        return this.order-o.order;
+        return this.order - o.order;
     }
 
     @Override
-    public Boolean before(Object obj) {
-        if(this.beforeFileter(obj))next.before(obj);
+    public Boolean before(Parameter obj) {
+        if (this.beforeFileter(obj)) next.before(obj);
         return this.beforeFileter(obj);
     }
 
     @Override
-    public Boolean after(Object obj) {
-        if(this.afterFileter(obj))next.after(obj);
-        return this.afterFileter(obj);
+    public Boolean after(Parameter obj) {
+        if (this.afterFileter(obj)) {
+            next.after(obj);
+            return true;
+        }
+        return false;
     }
 
     public AbstractFilter getNext() {
@@ -54,7 +61,7 @@ public abstract class AbstractFilter implements IFilter,Comparable<AbstractFilte
         this.next = next;
     }
 
-    public abstract Boolean beforeFileter(Object obj);
+    public abstract Boolean beforeFileter(Parameter obj);
 
-    public abstract Boolean afterFileter(Object obj);
+    public abstract Boolean afterFileter(Parameter obj);
 }

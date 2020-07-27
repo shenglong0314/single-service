@@ -1,5 +1,6 @@
 package com.rubete.singleservice.core;
 
+import com.rubete.singleservice.core.Parameter.Parameter;
 import com.rubete.singleservice.core.service.Service;
 
 import java.util.List;
@@ -7,10 +8,13 @@ import java.util.function.Predicate;
 
 public class ServiceImpl implements Service {
 
+
+     private InvokManager invokManager = InvokManager.getInvokManager();
     @Override
     public Object select(String id, Object obj) {
-        InvokManager.getInvokManager().getParameterManager().getParmeter().setId(id).setObj(obj);
-        return null;
+        Parameter parameter = InvokManager.getInvokManager().getParameterManager().getParmeter().setId(id).setObj(obj);
+        InvokManager.getInvokManager().getExecuteManage().execute(parameter);
+        return parameter.getData();
     }
 
     @Override

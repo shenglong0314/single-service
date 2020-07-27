@@ -2,7 +2,7 @@ package com.rubete.singleservice.core.execute;
 
 public abstract class AbstractHandle implements IHandle,Comparable<AbstractHandle> {
    protected int order = 1000;
-   protected IHandle handle = new EmptyHandle();
+   protected IHandle handle = null;
 
     public AbstractHandle() {
     }

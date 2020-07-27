@@ -1,6 +1,7 @@
 package com.rubete.singleservice.core.execute;
 
 import com.rubete.singleservice.core.Parameter.DefaultParameter;
+import com.rubete.singleservice.core.Parameter.Parameter;
 import com.rubete.singleservice.core.fileter.AbstractFilter;
 import com.rubete.singleservice.core.fileter.IFilter;
 
@@ -33,11 +34,11 @@ public class FilterHandle extends AbstractHandle {
     }
 
     @Override
-    public void action(DefaultParameter defaultParameter) {
-        if(filters.size()>0 && filters.get(0).before(defaultParameter.getObj()))
+    public void action(Parameter defaultParameter) {
+        if(filters.size()>0 && filters.get(0).before(defaultParameter))
             handle.action(defaultParameter);
 
-        if(filters.size()>0 && filters.get(0).after(defaultParameter.getData()));
+        if(filters.size()>0 && filters.get(0).after(defaultParameter));
     }
 
     public List<AbstractFilter> getFilters() {

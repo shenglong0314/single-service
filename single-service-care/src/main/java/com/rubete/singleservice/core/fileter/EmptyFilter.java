@@ -1,6 +1,8 @@
 package com.rubete.singleservice.core.fileter;
 
 
+import com.rubete.singleservice.core.Parameter.Parameter;
+
 public  class EmptyFilter extends AbstractFilter {
 
     public EmptyFilter() {
@@ -19,12 +21,12 @@ public  class EmptyFilter extends AbstractFilter {
     }
 
     @Override
-    public Boolean beforeFileter(Object obj) {
+    public Boolean beforeFileter(Parameter obj) {
         return false;
     }
 
     @Override
-    public Boolean afterFileter(Object obj) {
+    public Boolean afterFileter(Parameter obj) {
         return false;
     }
 }

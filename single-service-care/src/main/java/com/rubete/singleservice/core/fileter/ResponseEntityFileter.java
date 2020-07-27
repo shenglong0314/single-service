@@ -1,16 +1,17 @@
 package com.rubete.singleservice.core.fileter;
 
+import com.rubete.singleservice.core.Parameter.Parameter;
 import org.springframework.http.ResponseEntity;
 
 public class ResponseEntityFileter extends AbstractFilter {
     @Override
-    public Boolean beforeFileter(Object obj) {
-        return null;
+    public Boolean beforeFileter(Parameter obj) {
+        return true;
     }
 
     @Override
-    public Boolean afterFileter(Object obj) {
-        obj = ResponseEntity.ok(obj);
+    public Boolean afterFileter(Parameter obj) {
+        obj.setData(ResponseEntity.ok(obj.getData()));
         return true;
     }
 }

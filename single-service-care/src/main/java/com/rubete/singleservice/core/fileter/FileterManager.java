@@ -37,10 +37,13 @@ public class FileterManager {
     public FileterManager orderFilter(){
         Collections.sort(this.filters);
         for(int i = 0;i < this.filters.size();i++){
-            if(i+1 <= this.filters.size()){
-                this.filters.get(0).setNext(this.filters.get(i+1));
+            if(i+1 < this.filters.size()){
+                this.filters.get(i).setNext(this.filters.get(i+1));
+            }else {
+                this.filters.get(i).setNext(new EmptyFilter());
             }
         }
+
         return this;
     }
 

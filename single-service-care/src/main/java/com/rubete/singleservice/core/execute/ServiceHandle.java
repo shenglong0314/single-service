@@ -1,6 +1,7 @@
 package com.rubete.singleservice.core.execute;
 
 import com.rubete.singleservice.core.Parameter.DefaultParameter;
+import com.rubete.singleservice.core.Parameter.Parameter;
 import com.rubete.singleservice.core.fileter.AbstractFilter;
 import com.rubete.singleservice.core.service.AbsServiceActuator;
 
@@ -11,6 +12,11 @@ import java.util.List;
 
 public class ServiceHandle extends AbstractHandle {
    private AbsServiceActuator actuator;
+
+
+    public ServiceHandle() {
+        this.setOrder(1000);
+    }
 
     public ServiceHandle(AbsServiceActuator actuator) {
         this.setOrder(1000);
@@ -29,7 +35,7 @@ public class ServiceHandle extends AbstractHandle {
     }
 
     @Override
-    public void action(DefaultParameter defaultParameter) {
+    public void action(Parameter defaultParameter) {
         defaultParameter.setData(actuator.action(defaultParameter));
         handle.action(defaultParameter);
     }
