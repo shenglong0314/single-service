@@ -1,14 +1,11 @@
 package com.rubete.singleservice.core.service;
 
-import com.rubete.singleservice.core.Parameter.ParameterActuator;
-import com.rubete.singleservice.core.execute.IActuator;
-
-import java.util.function.Function;
+import com.rubete.singleservice.core.Parameter.Parameter;
 
 public class InsertActuator extends AbsServiceActuator {
 
     @Override
-    public Object action(ParameterActuator actuator) {
+    public Object action(Parameter actuator) {
         return null;
     }
 }

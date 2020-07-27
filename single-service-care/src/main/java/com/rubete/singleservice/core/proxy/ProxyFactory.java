@@ -1,4 +1,4 @@
-package com.rubete.singleservice.core.execute;
+package com.rubete.singleservice.core.proxy;
 
 
 import com.rubete.singleservice.core.service.InvokService;

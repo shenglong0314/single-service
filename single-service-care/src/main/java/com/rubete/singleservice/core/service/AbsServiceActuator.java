@@ -1,10 +1,7 @@
 package com.rubete.singleservice.core.service;
 
-import com.rubete.singleservice.core.Parameter.ParameterActuator;
-import com.rubete.singleservice.core.execute.IActuator;
+import com.rubete.singleservice.core.Parameter.Parameter;
 import org.mybatis.spring.SqlSessionTemplate;
-
-import java.util.function.Function;
 
 public abstract class AbsServiceActuator {
     private  static SqlSessionTemplate sqlSessionTemplate = null;
@@ -15,6 +12,6 @@ public abstract class AbsServiceActuator {
     public static void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
         AbsServiceActuator.sqlSessionTemplate = sqlSessionTemplate;
     }
-    public abstract Object action(ParameterActuator actuator);
+    public abstract Object action(Parameter parameter);
 
 }

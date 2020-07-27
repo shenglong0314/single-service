@@ -1,14 +1,11 @@
 package com.rubete.singleservice.core.service;
 
-import com.rubete.singleservice.core.Parameter.BasicParameterActuator;
-import com.rubete.singleservice.core.Parameter.ParameterActuator;
-import com.rubete.singleservice.core.execute.IActuator;
+import com.rubete.singleservice.core.Parameter.Parameter;
 
 
 public class SelectActuator extends AbsServiceActuator {
     @Override
-    public Object action(ParameterActuator actuator) {
-        BasicParameterActuator basi = (BasicParameterActuator)actuator;
-        return this.getSqlSessionTemplate().selectList(basi.getId(),basi.getObj());
+    public Object action(Parameter parameter) {
+        return this.getSqlSessionTemplate().selectList(parameter.getId(),parameter.getObj());
     }
 }

@@ -1,7 +1,5 @@
 package com.rubete.singleservice.core;
 
-import com.rubete.singleservice.core.Parameter.ParameterActuator;
-import com.rubete.singleservice.core.service.AbsServiceActuator;
 import com.rubete.singleservice.core.service.Service;
 
 import java.util.List;
@@ -11,14 +9,8 @@ public class ServiceImpl implements Service {
 
     @Override
     public Object select(String id, Object obj) {
-        Object action = InvokManager
-                .getInvokManager()
-                .getParameterManager()
-                .get().setId(id)
-                .setObj(obj)
-                .action(InvokManager.getInvokManager().getServiceManage().get());
-
-        return action;
+        InvokManager.getInvokManager().getParameterManager().getParmeter().setId(id).setObj(obj);
+        return null;
     }
 
     @Override
