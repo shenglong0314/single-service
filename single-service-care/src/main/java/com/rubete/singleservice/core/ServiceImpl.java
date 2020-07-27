@@ -12,7 +12,6 @@ public class ServiceImpl implements Service {
      private InvokManager invokManager = InvokManager.getInvokManager();
     @Override
     public Object select(String id, Object obj) {
-
         Parameter parameter = InvokManager.getInvokManager().getParameterManager().getParmeter().setId(id).setObj(obj);
         InvokManager.getInvokManager().getExecuteManage().execute(parameter);
         return parameter.getData();
