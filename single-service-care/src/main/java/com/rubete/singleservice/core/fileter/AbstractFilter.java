@@ -5,12 +5,12 @@ import com.rubete.singleservice.core.Parameter.Parameter;
 
 public abstract class AbstractFilter implements IFilter, Comparable<AbstractFilter> {
     protected int order = 1000;
-    private AbstractFilter next = null;
+    private IFilter next = null;
 
     public AbstractFilter() {
     }
 
-    public AbstractFilter(AbstractFilter filter) {
+    public AbstractFilter(IFilter filter) {
         this.next = filter;
     }
 
@@ -19,7 +19,7 @@ public abstract class AbstractFilter implements IFilter, Comparable<AbstractFilt
 
     }
 
-    public AbstractFilter(int order, AbstractFilter filter) {
+    public AbstractFilter(int order, IFilter filter) {
         this.next = filter;
         this.order = order;
 
@@ -40,24 +40,35 @@ public abstract class AbstractFilter implements IFilter, Comparable<AbstractFilt
 
     @Override
     public Boolean before(Parameter obj) {
-        if (this.beforeFileter(obj)) next.before(obj);
-        return this.beforeFileter(obj);
+        if (this.beforeFileter(obj)){
+            if(next ==null ){
+               return true;
+            }
+            return next.before(obj);
+        }
+
+        return false;
     }
 
     @Override
     public Boolean after(Parameter obj) {
-        if (this.afterFileter(obj)) {
-            next.after(obj);
-            return true;
+        if (this.afterFileter(obj)){
+            if(next == null){
+                return true;
+            }
+            return next.after(obj);
+
         }
+
+
         return false;
     }
 
-    public AbstractFilter getNext() {
+    public IFilter getNext() {
         return next;
     }
 
-    public void setNext(AbstractFilter next) {
+    public void setNext(IFilter next) {
         this.next = next;
     }
 

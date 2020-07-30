@@ -1,6 +1,6 @@
 package com.rubete.singleservice.core.execute;
 
-public abstract class AbstractHandle implements IHandle,Comparable<AbstractHandle> {
+public abstract class AbstractHandle implements IHandle {
    protected int order = 1000;
    protected IHandle handle = null;
 
@@ -12,7 +12,6 @@ public abstract class AbstractHandle implements IHandle,Comparable<AbstractHandl
         this.handle = handle;
     }
     public AbstractHandle(IHandle handle) {
-        this.order = order;
         this.handle = handle;
     }
 
@@ -30,11 +29,6 @@ public abstract class AbstractHandle implements IHandle,Comparable<AbstractHandl
 
     public void setHandle(IHandle handle) {
         this.handle = handle;
-    }
-
-    @Override
-    public int compareTo(AbstractHandle o) {
-        return this.order-o.order;
     }
 
 }

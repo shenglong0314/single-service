@@ -3,8 +3,6 @@ package com.rubete.singleservice.core.Config;
 
 import com.rubete.singleservice.core.InvokManager;
 
-import static com.rubete.singleservice.core.InvokManager.invokManager;
-
 
 public abstract class InvokConfig {
 
