@@ -3,12 +3,15 @@ package com.rubete.singleservice.core.execute.impl;
 import com.rubete.singleservice.core.Parameter.Parameter;
 import com.rubete.singleservice.core.execute.AbstractHandle;
 import com.rubete.singleservice.core.execute.IHandle;
+import com.rubete.singleservice.core.service.AbsService;
+import com.rubete.singleservice.core.service.ServiceManage;
 import com.rubete.singleservice.core.utils.OrderUtils;
 
 public class ServiceHandle extends AbstractHandle {
+    private ServiceManage serviceManage;
 
     public ServiceHandle() {
-        this.setOrder(OrderUtils.getFilterOrder());
+        this.setOrder(OrderUtils.getServiceOrder());
     }
 
     public ServiceHandle(int order, IHandle handle) {
@@ -17,7 +20,7 @@ public class ServiceHandle extends AbstractHandle {
 
     public ServiceHandle(IHandle handle) {
         super(handle);
-        this.setOrder(OrderUtils.getFilterOrder());
+        this.setOrder(OrderUtils.getServiceOrder());
     }
 
     @Override

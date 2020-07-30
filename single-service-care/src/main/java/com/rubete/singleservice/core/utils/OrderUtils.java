@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class OrderUtils {
     private  static   int FILTERORDER  = 500;
-    private  static int SERVICEORDER = 500;
+    private  static int SERVICEORDER = 1000;
 
 
     public static int getFilterOrder(){

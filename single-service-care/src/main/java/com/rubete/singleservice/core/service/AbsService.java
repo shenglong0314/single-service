@@ -1,6 +1,7 @@
 package com.rubete.singleservice.core.service;
 
 import com.rubete.singleservice.core.Parameter.Parameter;
+import org.apache.ibatis.mapping.MappedStatement;
 import org.mybatis.spring.SqlSessionTemplate;
 
 public abstract class AbsService {
@@ -14,6 +15,11 @@ public abstract class AbsService {
         AbsService.sqlSessionTemplate = sqlSessionTemplate;
     }
 
-    public abstract void action(Parameter parameter);
 
+    public static   String getType(String id){
+        MappedStatement mappedStatement = getSqlSessionTemplate().getConfiguration().getMappedStatement(id);
+        return mappedStatement.getSqlCommandType().toString();
+    }
+
+    public abstract void action(Parameter parameter);
 }

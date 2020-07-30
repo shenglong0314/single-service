@@ -10,7 +10,7 @@ public class ResponseEntityHandle extends AbstractHandle {
 
 
     public ResponseEntityHandle() {
-        this.setOrder(10000);
+        this.setOrder(100);
     }
 
     public ResponseEntityHandle(int order, IHandle handle) {
@@ -19,13 +19,13 @@ public class ResponseEntityHandle extends AbstractHandle {
 
     public ResponseEntityHandle(IHandle handle) {
         super(handle);
-        this.setOrder(10000);
+        this.setOrder(100);
     }
 
     @Override
     public void action(Parameter parameter) {
-        if(parameter.getData() != null){
-            parameter.setData(ResponseEntity.ok(parameter.getData()));
-        }
+        handle.action(parameter);
+        parameter.setData(ResponseEntity.ok(parameter.getData()));
+
     }
 }
