@@ -11,13 +11,13 @@ public  class EmptyFilter extends AbstractFilter {
 
     @Override
     public Boolean beforeFileter(Parameter obj) {
-        System.out.println("beforeFileter");
+        System.out.println("beforeFileter"+obj);
         return true;
     }
 
     @Override
     public Boolean afterFileter(Parameter obj) {
-        System.out.println("afterFileter");
+        System.out.println("afterFileter"+obj);
         return true;
     }
 
