@@ -12,11 +12,16 @@ import java.util.function.Predicate;
 
 @Data
 @Accessors(chain = true)
-public class Parameter {
+public class Parameter  {
     private String id;
     private Object obj;
     private Object data;
     private Predicate fun;
     private AbsService service;
     private IFilter filter;
+
+    public void exc(){
+         data = this.service.action(this.id,this.obj);
+    }
+
 }

@@ -3,12 +3,10 @@ package com.rubete.singleservice.core.execute.impl;
 import com.rubete.singleservice.core.Parameter.Parameter;
 import com.rubete.singleservice.core.execute.AbstractHandle;
 import com.rubete.singleservice.core.execute.IHandle;
-import com.rubete.singleservice.core.service.AbsService;
 import com.rubete.singleservice.core.service.ServiceManage;
 import com.rubete.singleservice.core.utils.OrderUtils;
 
 public class ServiceHandle extends AbstractHandle {
-    private ServiceManage serviceManage;
 
     public ServiceHandle() {
         this.setOrder(OrderUtils.getServiceOrder());
@@ -25,7 +23,7 @@ public class ServiceHandle extends AbstractHandle {
 
     @Override
     public void action(Parameter parameter) {
-        parameter.getService().action(parameter);
-        handle.action(parameter);
+        parameter.exc();
+        //handle.action(parameter);
     }
 }

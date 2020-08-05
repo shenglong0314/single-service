@@ -3,7 +3,6 @@ package com.rubete.singleservice.core.execute.impl;
 import com.rubete.singleservice.core.Parameter.Parameter;
 import com.rubete.singleservice.core.execute.AbstractHandle;
 import com.rubete.singleservice.core.execute.IHandle;
-import com.rubete.singleservice.core.fileter.AbstractFilter;
 import org.springframework.http.ResponseEntity;
 
 public class ResponseEntityHandle extends AbstractHandle {
@@ -24,8 +23,14 @@ public class ResponseEntityHandle extends AbstractHandle {
 
     @Override
     public void action(Parameter parameter) {
-        handle.action(parameter);
-        parameter.setData(ResponseEntity.ok(parameter.getData()));
+        try {
+            handle.action(parameter);
+            parameter.setData(ResponseEntity.ok(parameter.getData()));
+        }catch (Exception e) {
+            parameter.setData(ResponseEntity.badRequest().body(e));
+        }
+
+
 
     }
 }

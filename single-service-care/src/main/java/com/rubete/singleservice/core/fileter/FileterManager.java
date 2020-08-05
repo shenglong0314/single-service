@@ -36,7 +36,7 @@ public class FileterManager {
             if (i + 1 < this.filters.size()) {
                 this.filters.get(i).setNext(this.filters.get(i + 1));
             } else {
-                this.filters.get(i).setNext(new EmptyFilter());
+                //this.filters.get(i).setNext(new EmptyFilter());
             }
         }
 

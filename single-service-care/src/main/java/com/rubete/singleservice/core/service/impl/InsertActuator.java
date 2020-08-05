@@ -5,7 +5,8 @@ import com.rubete.singleservice.core.service.AbsService;
 
 public class InsertActuator extends AbsService {
 
-    @Override
-    public void action(Parameter actuator) {
+   @Override
+    public Object action(String id,Object parameter) {
+        return null;
     }
 }
