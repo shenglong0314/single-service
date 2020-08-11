@@ -46,7 +46,7 @@ public class FileterManager {
         filters.add(new EmptyFilter());
     }
 
-    public  IFilter getFilter() {
+    public   IFilter getFilter() {
         this.orderFilter();
         return filters.get(0);
     }

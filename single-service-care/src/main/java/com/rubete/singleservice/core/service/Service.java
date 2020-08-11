@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public interface Service {
-    <R> R select(String id, Object obj);
+    <R> R select(String id, Object obj) throws Exception;
 
     //<T, R> R select(String id, Object obj, IDataFileterFunction<T,R> fun);
 

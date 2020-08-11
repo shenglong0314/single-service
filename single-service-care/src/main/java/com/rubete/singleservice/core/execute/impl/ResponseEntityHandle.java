@@ -1,10 +1,13 @@
 package com.rubete.singleservice.core.execute.impl;
 
 import com.rubete.singleservice.core.Parameter.Parameter;
+import com.rubete.singleservice.core.annotation.Handle;
 import com.rubete.singleservice.core.execute.AbstractHandle;
 import com.rubete.singleservice.core.execute.IHandle;
 import org.springframework.http.ResponseEntity;
 
+
+@Handle(100)
 public class ResponseEntityHandle extends AbstractHandle {
 
 
@@ -25,7 +28,9 @@ public class ResponseEntityHandle extends AbstractHandle {
     public void action(Parameter parameter) {
         try {
             handle.action(parameter);
-            parameter.setData(ResponseEntity.ok(parameter.getData()));
+            //ResponseEntity<Object> ok = ResponseEntity.ok(parameter.getData());
+            //parameter.setData(ok);
+            System.out.println(parameter.getData());
         }catch (Exception e) {
             parameter.setData(ResponseEntity.badRequest().body(e));
         }

@@ -7,37 +7,48 @@ import com.rubete.singleservice.core.execute.impl.ResponseEntityHandle;
 import com.rubete.singleservice.core.execute.impl.ServiceHandle;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ExecuteManage {
 
-    private final List<IHandle> handles=new ArrayList<>();
+    // private static final List<AbstractHandle> handles=new ArrayList<>();
+    private static final TreeSet<AbstractHandle> handles=new TreeSet<>();
+    private static final ExecuteManage executeManager=new ExecuteManage();
 
     public ExecuteManage() {
-        this.init();
+
     }
 
-    public void execute(Parameter parameter){
-        handles.get(0).action(parameter);
+    public  void execute(Parameter parameter){
+        handles.first().action(parameter);
     }
 
-    private void init(){
-        this.handles.add(new ResponseEntityHandle());
-        this.handles.add(new ServiceHandle());
-        this.handles.add(new FilterHandle());
-        this.order();
+    public static ExecuteManage getExecuteManager() {
+        return executeManager;
+    }
+    public static  ExecuteManage addHeader(AbstractHandle abstractHandle) {
+        handles.add(abstractHandle);
+        ExecuteManage.getExecuteManager().order();
+        return executeManager;
     }
 
-    private ExecuteManage order(){
-        this.handles.sort((m,n)->{return m.getOrder()-n.getOrder();});
-        for(int i = 0;i < this.handles.size();i++){
-            if((i+1) < this.handles.size()){
-                this.handles.get(i).setHandle(this.handles.get(i+1));
-            }else {
-                this.handles.get(i).setHandle(new EmptyHandle());
+   /* private  void init(){
+        handles.add(new ResponseEntityHandle());
+        handles.add(new ServiceHandle());
+        handles.add(new FilterHandle());
+        order();
+    }*/
+
+    private  ExecuteManage order(){
+
+        Iterator<AbstractHandle> iterator = handles.iterator();
+        iterator.next();
+        for (AbstractHandle handle : handles) {
+            if(iterator.hasNext()){
+                AbstractHandle next = iterator.next();
+                handle.setHandle(next);
             }
         }
-        return this;
+        return executeManager;
     }
 }

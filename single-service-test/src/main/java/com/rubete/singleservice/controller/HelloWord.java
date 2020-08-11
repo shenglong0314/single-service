@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 @RestController
 public class HelloWord {
@@ -19,8 +20,8 @@ public class HelloWord {
     @Autowired
     private InvokManager invokManager;
     @RequestMapping("/hello")
-    public ResponseEntity hello(@RequestParam Map<String,Object> map){
-        Object select = invokManager.getService().select("userMapper.selectUser", map);
-        return ResponseEntity.ok(select);
+    public Object hello(@RequestParam Map<String,Object> map) throws Exception {
+        return invokManager.getService().select("userMapper.selectUser", map);
+
     }
 }

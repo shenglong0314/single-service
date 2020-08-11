@@ -1,8 +1,11 @@
 package com.rubete.singleservice.core.service;
 
 import com.rubete.singleservice.core.Parameter.Parameter;
+import com.rubete.singleservice.core.execute.IHandle;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.mybatis.spring.SqlSessionTemplate;
+
+import java.util.concurrent.*;
 
 public abstract class AbsService {
 
@@ -23,21 +26,38 @@ public abstract class AbsService {
     }
 
 
-    protected  Object insert(String id,Object param){
+    public  Object insert(String id,Object param){
         return this.sqlSessionTemplate.insert(id,param);
     }
-    protected  Object update(String id,Object param){
+    public  Object update(String id,Object param){
         return this.sqlSessionTemplate.update(id,param);
     }
-    protected  Object selectList(String id,Object param){
+    public  Object selectList(String id,Object param){
         return this.sqlSessionTemplate.selectList(id,param);
     }
-    protected  Object selectOne(String id,Object param){
+    public  Object selectOne(String id,Object param){
         return this.sqlSessionTemplate.selectOne(id,param);
     }
-    protected  Object delete(String id,Object param){
+    public  Object delete(String id,Object param){
         return this.sqlSessionTemplate.delete(id,param);
     }
+
+    /**
+     * 异步执行方法。
+     * @param asyncHandle
+     * @return
+     */
+    public Object AsynAction(IAsynHandle asyncHandle) throws ExecutionException, InterruptedException {
+        Callable<Object> callable = new Callable<Object>() {
+            @Override
+            public Object call() throws Exception {
+                return asyncHandle.exce();
+            }
+        };
+        return new FutureTask<Object>(callable).get();
+    }
+
+
 
     public abstract Object action(String id,Object parameter);
 }

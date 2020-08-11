@@ -1,20 +1,20 @@
 package com.rubete.singleservice.core.execute;
 
-public abstract class AbstractHandle implements IHandle {
+public abstract class AbstractHandle implements IHandle,IOreder<AbstractHandle> {
    protected int order = 1000;
    protected IHandle handle = null;
 
     public AbstractHandle() {
     }
 
-    public AbstractHandle(int order, IHandle handle) {
-        this.order = order;
-        this.handle = handle;
-    }
     public AbstractHandle(IHandle handle) {
         this.handle = handle;
     }
 
+    public AbstractHandle(int order, IHandle handle) {
+        this.order = order;
+        this.handle = handle;
+    }
     public int getOrder() {
         return order;
     }
@@ -31,4 +31,8 @@ public abstract class AbstractHandle implements IHandle {
         this.handle = handle;
     }
 
+    @Override
+    public int compareTo(AbstractHandle o) {
+        return this.getOrder()-o.getOrder();
+    }
 }
